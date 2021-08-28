@@ -38,5 +38,7 @@ int
 		i++;
 	}
 	printf("%d\n", count);
+	free(num_array);
+	num_array = NULL;
 	return (0);
 }
