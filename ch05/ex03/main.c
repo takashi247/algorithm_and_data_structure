@@ -15,6 +15,43 @@ static void
 	}
 }
 
+static int
+	count_int(int *dp, int w, int size_of_array)
+{
+	int	i;
+	int	count;
+
+	i = 1;
+	count = 0;
+	while (i <= w)
+	{
+		if (dp[(w + 1) * size_of_array + i])
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static void
+	print_dp(int *dp, int w, int size_of_array)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= size_of_array)
+	{
+		j = 0;
+		while (j <= w)
+		{
+			printf("%d ", dp[i * (w + 1) + j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
 int
 	main(int ac, char **av)
 {
@@ -50,10 +87,8 @@ int
 		}
 		i++;
 	}
-	if (dp[(w + 1) * (size_of_array + 1) - 1])
-		printf("Yes\n");
-	else
-		printf("No\n");
+	print_dp(dp, w, size_of_array);
+	printf("result: %d\n", count_int(dp, w, size_of_array));
 	free(num_array);
 	num_array = NULL;
 	free(dp);
